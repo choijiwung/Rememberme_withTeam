@@ -168,7 +168,7 @@
                     android:layout_alignStart="@+id/button2"
                     android:drawableLeft="@drawable/facebook_logo_29"
                     android:drawableStart="@drawable/facebook_logo_29"
-                    android:text="login with facebook" />
+                    android:text="sign up with facebook" />
 
                 <Button
                     android:id="@+id/button2"
@@ -181,7 +181,7 @@
                     android:layout_alignStart="@+id/editText"
                     android:drawableLeft="@drawable/google_logo_29"
                     android:drawableStart="@drawable/google_logo_29"
-                    android:text="login with google" />
+                    android:text="sign up with google" />
             </RelativeLayout>
 
         </LinearLayout>
