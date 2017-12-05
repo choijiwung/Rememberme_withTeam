@@ -37,7 +37,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".DatePickerActivity" />
-        <activity android:name=".Trip_Date_Activity"></activity>
+        <activity android:name=".trip_calendar_Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".trip_select_Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SessionActivity"></activity>
     </application>
 
 </manifest>
