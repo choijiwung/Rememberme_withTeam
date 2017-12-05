@@ -29,7 +29,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".Sign_inActivity">
+        <activity android:name=".Sign_upActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,7 +51,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SessionActivity"></activity>
+        <!--<activity android:name=".SessionActivity"></activity>-->
     </application>
 
 </manifest>
