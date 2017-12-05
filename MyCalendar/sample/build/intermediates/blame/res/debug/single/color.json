@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\color\\calendar_text_selector.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\library\\build\\intermediates\\bundles\\default\\res\\color\\calendar_text_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\color\\custom_calendar_text_selector.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\src\\main\\res\\color\\custom_calendar_text_selector.xml"
+    }
+]

@@ -1,0 +1,7 @@
+#Tue Dec 05 09:47:43 KST 2017
+base.0=C\:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_c88b52c8b89e1b6cecb0dd942751237fd1bac068
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_bc9eb4bdc97425b949ccc19a197a75ba8a78e73a\\classes.dex
+base.1=C\:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_bc9eb4bdc97425b949ccc19a197a75ba8a78e73a
+file.0=C\:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_c88b52c8b89e1b6cecb0dd942751237fd1bac068\\classes.dex

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_circle_today.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\src\\main\\res\\drawable\\bg_circle_today.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\drawable\\custom_calendar_bg_selector.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\src\\main\\res\\drawable\\custom_calendar_bg_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_circle_selected.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\src\\main\\res\\drawable\\bg_circle_selected.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\drawable\\calendar_bg_selector.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\library\\build\\intermediates\\bundles\\default\\res\\drawable\\calendar_bg_selector.xml"
+    }
+]

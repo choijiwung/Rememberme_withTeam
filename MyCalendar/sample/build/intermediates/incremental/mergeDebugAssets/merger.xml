@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="default"><source path="C:\Users\JW\AndroidStudioProjects\MyCalendar\library\build\intermediates\bundles\default\assets"/></dataSet><dataSet config="main"><source path="C:\Users\JW\AndroidStudioProjects\MyCalendar\sample\src\main\assets"/><source path="C:\Users\JW\AndroidStudioProjects\MyCalendar\sample\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\JW\AndroidStudioProjects\MyCalendar\sample\src\debug\assets"/></dataSet></merger>

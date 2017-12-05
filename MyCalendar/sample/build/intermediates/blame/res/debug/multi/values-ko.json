@@ -1,0 +1,45 @@
+[
+    {
+        "outputFile": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ko\\values-ko.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 68,
+                    "endOffset": 119
+                },
+                "from": {
+                    "file": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\library\\build\\intermediates\\bundles\\default\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 68,
+                        "endOffset": 119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 124,
+                    "endColumn": 54,
+                    "endOffset": 174
+                },
+                "from": {
+                    "file": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\library\\build\\intermediates\\bundles\\default\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 124,
+                        "endColumn": 54,
+                        "endOffset": 174
+                    }
+                }
+            }
+        ]
+    }
+]

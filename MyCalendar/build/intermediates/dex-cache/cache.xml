@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\JW\AndroidStudioProjects\MyCalendar\sample\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\JW\AndroidStudioProjects\MyCalendar\sample\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_c88b52c8b89e1b6cecb0dd942751237fd1bac068\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JW\AndroidStudioProjects\MyCalendar\sample\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8c39b9cfef2fb61599d4dce16cd36ff89b05b26e">
+        <dex dex="C:\Users\JW\AndroidStudioProjects\MyCalendar\sample\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_bc9eb4bdc97425b949ccc19a197a75ba8a78e73a\classes.dex" />
+    </item>
+
+</items>

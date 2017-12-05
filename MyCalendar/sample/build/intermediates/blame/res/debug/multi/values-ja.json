@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ja\\values-ja.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 65,
+                    "endOffset": 116
+                },
+                "from": {
+                    "file": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\library\\build\\intermediates\\bundles\\default\\res\\values-ja\\values-ja.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 65,
+                        "endOffset": 116
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\layout\\dialog.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\src\\main\\res\\layout\\dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_digits.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\src\\main\\res\\layout\\dialog_digits.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_customized.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\src\\main\\res\\layout\\dialog_customized.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\layout\\day_view_custom.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\src\\main\\res\\layout\\day_view_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\layout\\week.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\library\\build\\intermediates\\bundles\\default\\res\\layout\\week.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\layout\\sample_calendar_picker.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\src\\main\\res\\layout\\sample_calendar_picker.xml"
+    },
+    {
+        "merged": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\sample\\build\\intermediates\\res\\merged\\debug\\layout\\month.xml",
+        "source": "C:\\Users\\JW\\AndroidStudioProjects\\MyCalendar\\library\\build\\intermediates\\bundles\\default\\res\\layout\\month.xml"
+    }
+]
