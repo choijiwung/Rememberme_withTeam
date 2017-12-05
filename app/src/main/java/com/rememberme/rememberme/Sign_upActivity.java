@@ -28,10 +28,9 @@ import java.net.URL;
 
 import retrofit2.Retrofit;
 
-import static com.rememberme.rememberme.R.id.BtnPost;
 import static com.rememberme.rememberme.R.id.emailText;
 
-public class Sign_upActivity extends AppCompatActivity  {
+public class Sign_upActivity extends AppCompatActivity implements View.OnClickListener  {
     EditText etemail;
     EditText etpassword;
     EditText etname;
@@ -48,7 +47,7 @@ public class Sign_upActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        final String URL = "http://70.12.50.58:3000/users";
+//        final String url = "http://70.12.50.58:3000/users";
         //레이아웃에서 뷰 찾기
 
         etemail = (EditText) findViewById(emailText);
@@ -69,12 +68,7 @@ public class Sign_upActivity extends AppCompatActivity  {
         }
 
         // add click listener to Button "POST"
-        btnPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                POST(URL, person);
-            }
-        });
+        btnPost.setOnClickListener(this);
 
     }
 
@@ -150,7 +144,7 @@ public class Sign_upActivity extends AppCompatActivity  {
     public void onClick(View view) {
 
         switch(view.getId()){
-            case BtnPost:
+            case R.id.button:
                 if(!validate())
                     Toast.makeText(getBaseContext(), "Enter some data!", Toast.LENGTH_LONG).show();
                 else {
