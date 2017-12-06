@@ -76,6 +76,21 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
+                android:id="@+id/passwordconfirmText"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:hint="비번확인"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <EditText
                 android:id="@+id/nameText"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
@@ -90,32 +105,7 @@
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff" />
 
-            <RadioGroup
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/genderGroup"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
 
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="여성"
-                    android:id="@+id/genderWoman"
-                    android:layout_weight="1"
-                    android:checked="true"/>
-
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="남성"
-                    android:id="@+id/genderMan"
-                    android:layout_weight="1"
-                    android:checked="true"/>
-
-
-            </RadioGroup>
 
             <Button
                 android:id="@+id/BtnPost"
@@ -128,6 +118,14 @@
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
 
             <TextView
                 android:id="@+id/textView3"

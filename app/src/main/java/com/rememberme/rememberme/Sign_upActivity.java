@@ -34,6 +34,7 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
     EditText etemail;
     EditText etpassword;
     EditText etname;
+    EditText etpasswordconfirm;
     RadioButton etgender;
     Button btnPost;
     TextView tvIsConnected;
@@ -52,6 +53,7 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
 
         etemail = (EditText) findViewById(emailText);
         etpassword = (EditText) findViewById(R.id.passwordText);
+        etpasswordconfirm = (EditText) findViewById(R.id.passwordconfirmText);
         etname = (EditText) findViewById(R.id.nameText);
         tvIsConnected = (TextView) findViewById(R.id.textView);
         textView = (TextView) findViewById(R.id.textView3);
@@ -150,7 +152,11 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
                 else {
                     // call AsynTask to perform network operation on separate thread
                     HttpAsyncTask httpTask = new HttpAsyncTask(Sign_upActivity.this);
-                    httpTask.execute("http://70.12.50.58:3000/users", etemail.getText().toString(), etname.getText().toString(), etpassword.getText().toString());
+                    Log.d("aa", "name : " + etname.getText().toString());
+                    Log.d("aa", "email : " + etemail.getText().toString());
+                    Log.d("aa", "password : " + etpassword.getText().toString());
+                    Log.d("aa", "password_confirmation : " + etpasswordconfirm.getText().toString());
+                    httpTask.execute("http://70.12.50.58:3000/users/signup", etemail.getText().toString(), etname.getText().toString(), etpassword.getText().toString(), etpasswordconfirm.getText().toString());
 
                 }
                 break;
@@ -171,7 +177,8 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
             person.setEmail(urls[1]);
             person.setName(urls[2]);
             person.setPassword(urls[3]);
-
+            person.setPasswordconfirm(urls[4]);
+//            person.setToken(urls[4]);
             return POST(urls[0],person);
         }
         // onPostExecute displays the results of the AsyncTask.

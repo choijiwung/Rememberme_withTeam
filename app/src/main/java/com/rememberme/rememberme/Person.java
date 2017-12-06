@@ -8,7 +8,15 @@ public class Person {
     private String email;
     private String password;
     private String name;
-    private String gender;
+    private String passwordconfirm;
+
+    public String getPasswordconfirm() {
+        return passwordconfirm;
+    }
+
+    public void setPasswordconfirm(String passwordconfirm) {
+        this.passwordconfirm = passwordconfirm;
+    }
 
     public String getEmail() {
         return email;
@@ -34,11 +42,5 @@ public class Person {
         this.name = name;
     }
 
-    public String getGender() {
-        return gender;
-    }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 }
