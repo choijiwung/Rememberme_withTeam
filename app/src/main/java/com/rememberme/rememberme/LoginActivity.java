@@ -45,6 +45,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginButton = (Button) findViewById(R.id.loginButton);
         signButton = (Button) findViewById(R.id.Signbtn);
 
+        signButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Sign_upIntent = new Intent(getApplicationContext(),Sign_upActivity.class);
+                startActivity(Sign_upIntent);
+            }
+        });
+
         if(isConnected()){
 //            tvIsConnected.setBackgroundColor(0xFF00CC00);
 //            tvIsConnected.setText("You are conncted");

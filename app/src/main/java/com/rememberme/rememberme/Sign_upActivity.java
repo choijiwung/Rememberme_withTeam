@@ -48,8 +48,7 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
 
         etemail = (EditText) findViewById(emailText);
         etpassword = (EditText) findViewById(R.id.passwordText);
-        etpasswordconfirm = (EditText) findViewById(R.id.passwordconfirmText);
-        etname = (EditText) findViewById(R.id.nameText);
+        etpasswordconfirm = (EditText) findViewById(R.id.PasswordConfirmText);
         tvIsConnected = (TextView) findViewById(R.id.textView);
         textView = (TextView) findViewById(R.id.textView3);
         btnPost = (Button) findViewById(R.id.button);
@@ -173,9 +172,8 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
 
             user = new User();
             user.setEmail(urls[1]);
-            user.setName(urls[2]);
-            user.setPassword(urls[3]);
-            user.setPassword_confirmation(urls[4]);
+            user.setPassword(urls[2]);
+            user.setPassword_confirmation(urls[3]);
             Log.d("aa",user.toString());
             return POST(urls[0], user);
         }
