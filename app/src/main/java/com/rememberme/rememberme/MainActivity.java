@@ -1,11 +1,15 @@
 package com.rememberme.rememberme;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
+    CurrentFragment currentFragment;
+    ListFragment listFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,4 +55,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
-}
+
