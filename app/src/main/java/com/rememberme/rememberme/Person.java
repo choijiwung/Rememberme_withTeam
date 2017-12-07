@@ -1,21 +1,19 @@
 package com.rememberme.rememberme;
 
-/**
- * Created by JW on 2017-12-04.
- */
+
 
 public class Person {
     private String email;
     private String password;
     private String name;
-    private String passwordconfirm;
+    private String password_confirmation;
 
-    public String getPasswordconfirm() {
-        return passwordconfirm;
+    public String getPassword_confirmation() {
+        return password_confirmation;
     }
 
-    public void setPasswordconfirm(String passwordconfirm) {
-        this.passwordconfirm = passwordconfirm;
+    public void setPassword_confirmation(String password_confirmation) {
+        this.password_confirmation = password_confirmation;
     }
 
     public String getEmail() {

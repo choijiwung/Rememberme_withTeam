@@ -14,68 +14,54 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@color/colorPrimary"
+
             android:orientation="vertical">
-
             <ImageView
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                android:id="@+id/imageView2"
+                android:layout_width="149dp"
+                android:layout_height="62dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/logo2" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Login"
-                android:textColor="#ffffff"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-
+                android:layout_marginTop="106dp"
+                android:src="@drawable/rm_logo" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="324dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+
             android:weightSum="1">
-
-
             <EditText
                 android:id="@+id/idText"
                 android:layout_width="280dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
-                android:background="@color/colorPrimary"
-                android:drawableLeft="@drawable/ic_person_black_24dp"
-                android:drawableStart="@drawable/ic_person_black_24dp"
-                android:hint="아이디(email)"
+                android:background="?android:attr/editTextBackground"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:drawableLeft="@drawable/rm_profile"
+                android:drawableStart="@drawable/rm_profile"
+                android:hint="example@email.com"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
-
+                android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray" />
             <EditText
                 android:id="@+id/passwordText"
                 android:layout_width="280dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary"
-                android:drawableLeft="@drawable/ic_lock_black_24dp"
-                android:drawableStart="@drawable/ic_lock_black_24dp"
-                android:hint="비밀번호"
+                android:layout_marginTop="5dp"
+                android:background="?android:attr/editTextBackground"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:drawableLeft="@drawable/rm_pw"
+                android:drawableStart="@drawable/rm_pw"
+                android:hint="password"
                 android:inputType="textPassword"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
+                android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/loginButton"
@@ -83,62 +69,61 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary"
-                android:text="로그인"
+                android:background="@drawable/rm_btn_login"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
             <Button
                 android:id="@+id/button"
-                android:layout_width="280dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="12dp"
                 android:layout_above="@+id/button2"
-                android:layout_marginTop="20dp"
                 android:layout_alignEnd="@+id/button2"
                 android:layout_alignLeft="@+id/button2"
                 android:layout_alignRight="@+id/button2"
                 android:layout_alignStart="@+id/button2"
-                android:layout_gravity="center"
-                android:drawableLeft="@drawable/facebook_logo_29"
-                android:drawableStart="@drawable/facebook_logo_29"
-                android:text="login with facebook" />
-
+                android:background="@drawable/rm_btn_fb" />
             <Button
                 android:id="@+id/button2"
-                android:layout_width="280dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center"
-                android:drawableLeft="@drawable/google_logo_29"
-                android:drawableStart="@drawable/google_logo_29"
-                android:text="login with google" />
-
+                android:layout_weight="0.5"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/rm_btn_google" />
         </LinearLayout>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_gravity="center">
-
-            <TextView
-                android:id="@+id/registerButton"
+            <Button
+                android:id="@+id/Signbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView2"
+                android:layout_alignBottom="@+id/textView2"
+                android:layout_toEndOf="@+id/textView2"
+                android:layout_toRightOf="@+id/textView2"
+                android:background="@color/colorPrimary"
                 android:text="회원가입"
                 android:textColor="@color/colorAccent"
-                android:textSize="18dp"
-                android:layout_marginLeft="19dp"
-                android:layout_marginStart="19dp"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/textView2"
-                android:layout_toEndOf="@+id/textView2" />
-
+                android:textColorLink="@color/colorAccent"
+                android:textSize="18dp" />
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
@@ -150,9 +135,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
-
         </RelativeLayout>
-
     </LinearLayout>
-
 </RelativeLayout>

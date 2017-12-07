@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +25,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import retrofit2.Retrofit;
-
 import static com.rememberme.rememberme.R.id.emailText;
 
 public class Sign_upActivity extends AppCompatActivity implements View.OnClickListener  {
@@ -35,12 +32,10 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
     EditText etpassword;
     EditText etname;
     EditText etpasswordconfirm;
-    RadioButton etgender;
     Button btnPost;
     TextView tvIsConnected;
-    Person person;
+    User user;
     static    String strJson = "";
-    private Retrofit retrofit;
     TextView textView;
 
 
@@ -74,7 +69,7 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    public static String POST(String url, Person person){
+    public static String POST(String url, User user){
         InputStream is = null;
         String result = "";
         try {
@@ -85,16 +80,18 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
 
             // build jsonObject
             JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("email", person.getEmail());
-            jsonObject.accumulate("name", person.getName());
-            jsonObject.accumulate("password", person.getPassword());
+            jsonObject.accumulate("email", user.getEmail());
+            jsonObject.accumulate("name", user.getName());
+            jsonObject.accumulate("password", user.getPassword());
+            Log.d("aa","json,pass :" + user.getPassword_confirmation());
+            jsonObject.accumulate("password_confirmation", user.getPassword_confirmation());
 
             // convert JSONObject to JSON to String
             json = jsonObject.toString();
 
             // ** Alternative way to convert Person object to JSON string usin Jackson Lib
             // ObjectMapper mapper = new ObjectMapper();
-            // json = mapper.writeValueAsString(person);
+            // json = mapper.writeValueAsString(user);
 
             // Set some headers to inform server about the type of the content
             httpCon.setRequestProperty("Accept", "application/json");
@@ -106,7 +103,7 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
             httpCon.setDoInput(true);
 
             OutputStream os = httpCon.getOutputStream();
-            os.write(json.getBytes("euc-kr"));
+            os.write(json.getBytes("UTF-8"));
             os.flush();
             // receive response as inputStream
             try {
@@ -157,6 +154,7 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
                     Log.d("aa", "password : " + etpassword.getText().toString());
                     Log.d("aa", "password_confirmation : " + etpasswordconfirm.getText().toString());
                     httpTask.execute("http://70.12.50.58:3000/users/signup", etemail.getText().toString(), etname.getText().toString(), etpassword.getText().toString(), etpasswordconfirm.getText().toString());
+//                    httpTask.execute("http://70.12.50.58:3000/users/signup");
 
                 }
                 break;
@@ -173,13 +171,13 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
         @Override
         protected String doInBackground(String... urls) {
 
-            person = new Person();
-            person.setEmail(urls[1]);
-            person.setName(urls[2]);
-            person.setPassword(urls[3]);
-            person.setPasswordconfirm(urls[4]);
-//            person.setToken(urls[4]);
-            return POST(urls[0],person);
+            user = new User();
+            user.setEmail(urls[1]);
+            user.setName(urls[2]);
+            user.setPassword(urls[3]);
+            user.setPassword_confirmation(urls[4]);
+            Log.d("aa",user.toString());
+            return POST(urls[0], user);
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
@@ -194,7 +192,7 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
                     try {
                         JSONArray json = new JSONArray(strJson);
                         mainAct.textView.setText(json.toString(1));
-                        Toast.makeText(mainAct, json.toString(0)+", " + json.toString(1), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mainAct, json.toString(0)+", " + json.toString(1)+json.toString(2), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -210,6 +208,8 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
         else if(etpassword.getText().toString().trim().equals(""))
             return false;
         else if(etname.getText().toString().trim().equals(""))
+            return false;
+        else if(etpasswordconfirm.getText().toString().trim().equals(""))
             return false;
         else
             return true;

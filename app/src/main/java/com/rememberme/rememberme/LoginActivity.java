@@ -1,6 +1,7 @@
 package com.rememberme.rememberme;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -28,9 +29,10 @@ import static android.widget.Toast.makeText;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     EditText idText,passwordText;
-    Button loginButton;
+    Button loginButton,signButton;
     static    String strJson = "";
     User user;
+    String token;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         idText = (EditText) findViewById(R.id.idText);
         passwordText = (EditText) findViewById(R.id.passwordText);
         loginButton = (Button) findViewById(R.id.loginButton);
-
+        signButton = (Button) findViewById(R.id.Signbtn);
 
         if(isConnected()){
 //            tvIsConnected.setBackgroundColor(0xFF00CC00);
@@ -136,13 +138,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     HttpAsyncTask httpTask = new HttpAsyncTask(LoginActivity.this);
 
                     httpTask.execute("http://70.12.50.58:3000/users/signin", idText.getText().toString(), passwordText.getText().toString());
-
+                    Intent loginIntent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(loginIntent);
                 }
                 break;
         }
 
     }
-    private class HttpAsyncTask extends AsyncTask<String, String, String> {
+    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
 
         private   LoginActivity mainAct;
 
@@ -156,7 +159,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             user.setEmail(urls[1]);
             user.setPassword(urls[2]);
 //            user.setToken(urls[3]);
-//            person.setToken(urls[4]);
+//            user.setToken(urls[4]);
             return POST(urls[0],user);
         }
         // onPostExecute displays the results of the AsyncTask.
@@ -165,6 +168,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             super.onPostExecute(result);
             strJson  = result;
             Log.d("aa",result);
+//            token = result;
+//            Log.d("aa",token.toString());
             mainAct.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
