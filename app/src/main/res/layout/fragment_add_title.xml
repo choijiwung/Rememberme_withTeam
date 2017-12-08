@@ -4,84 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
-    <!--android:background="@mipmap/rm_img_back"-->
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/actionbar_linear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:src="@drawable/logo"
+            />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#8acf3f3f"
-        android:elevation="1dp"
+        android:background="@mipmap/list_background"
         android:orientation="vertical"
         android:weightSum="1">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="64dp">
-
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="17.5dp"/>
-            <!--android:background="@mipmap/rm_btn_cancel" />-->
-
-            <Button
-                android:id="@+id/button9"
-                android:layout_width="42dp"
-                android:layout_height="25dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="17.5dp"
-                android:background="@color/colorPrimary"
-                android:gravity="center"
-                android:text="완료"
-                android:textColor="#00bcdf"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:weightSum="1">
-
             <TextView
                 android:id="@+id/textView_trip"
                 android:layout_width="308dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="50dp"
-                android:layout_weight="0.15"
-                android:background="#903b3b3b"
-                android:elegantTextHeight="true"
+                android:background="#813b3b3b"
                 android:gravity="center"
+                android:elegantTextHeight="true"
                 android:text="여행 제목을 입력하세요."
                 android:textColor="@android:color/white"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:typeface="sans" />
+                android:typeface="sans"
+                android:layout_weight="0.15" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="1">
-
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
@@ -90,15 +68,14 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/Btnstartdate"
                 android:layout_width="wrap_content"
                 android:layout_height="27dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="#903b3b3b"
+                android:background="#813b3b3b"
                 android:text="여행시작일"
                 android:textColor="@android:color/white" />
-
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
@@ -112,44 +89,40 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/BtnEndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
                 android:layout_marginTop="10dp"
-                android:background="#903b3b3b"
+                android:background="#813b3b3b"
                 android:text="여행 종료일"
                 android:textColor="@android:color/white" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
             android:orientation="vertical"
             android:weightSum="1">
-
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="50dp"
                 android:layout_height="2dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="50dp"
                 app:srcCompat="@android:color/white" />
-
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="319dp"
                 android:layout_height="25dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="15dp"
-                android:layout_weight="0.01"
-                android:background="#903b3b3b"
+                android:background="#813b3b3b"
                 android:elegantTextHeight="true"
                 android:gravity="center"
                 android:text="여행을 나타내는 태그를 1개 이상 입력해주세요"
                 android:textColor="@android:color/white"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:layout_weight="0.01" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-

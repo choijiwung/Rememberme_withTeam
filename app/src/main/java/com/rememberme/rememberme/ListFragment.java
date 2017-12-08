@@ -1,5 +1,6 @@
 package com.rememberme.rememberme;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,31 +10,47 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import static com.rememberme.rememberme.R.id.addTitle_button;
+
+
 /**
- * Created by JW on 2017-12-07.
+ * Created by samsung on 2017-11-17.
  */
+// 여행목록 탭
+public class ListFragment extends Fragment {
 
-public class ListFragment extends Fragment{
+    MainActivity mainActivity;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mainActivity = (MainActivity) getActivity();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mainActivity = null;
+    }
+
     @Nullable
-
-    Button BtnaddTitle;
-
+    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { //레이아웃을 인플레이터 할수 있게하는 메소드
-        ViewGroup rootView   = (ViewGroup) inflater.inflate (R.layout.fragment_list, container, false); // false는 바로 붙이지 않고, 동작할때만 붙일 수있게
+        final ViewGroup rootView   = (ViewGroup) inflater.inflate (R.layout.fragment_list, container, false); // false는 바로 붙이지 않고, 동작할때만 붙일 수있게
 
-        BtnaddTitle = (Button)rootView.findViewById(R.id.addTrip);
-
-        BtnaddTitle.setOnClickListener(new View.OnClickListener() {
+        Button BtnAddTitle = (Button) rootView.findViewById(addTitle_button);
+        BtnAddTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent addtripIntent = new Intent(getActivity(), AddTitleActivity.class);
-                getActivity().startActivity(addtripIntent);
+                ((ViewGroup)(rootView.getParent())).removeView(rootView);
+                Intent goToAddTitleActivity = new Intent(getActivity(), AddTitleActivity.class);
+                getActivity().startActivity(goToAddTitleActivity);
             }
         });
-
-
         return rootView;
+
+
     }
+
 
 }

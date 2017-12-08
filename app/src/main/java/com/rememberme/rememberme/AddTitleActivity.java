@@ -8,11 +8,11 @@ public class AddTitleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_title);
+    setContentView(R.layout.activity_add_title);
 
-        AddTitleFragment addTitleFragment = new AddTitleFragment();
+    AddTitleFragment addTitleFragment = new AddTitleFragment();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.addTitle_container,addTitleFragment).commit();
+    getSupportFragmentManager().beginTransaction().replace(R.id.addTitle_container,addTitleFragment).commit();
 
-    }
+}
 }

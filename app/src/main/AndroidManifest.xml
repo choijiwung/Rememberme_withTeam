@@ -30,7 +30,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Trip_inputActivity" />
         <activity android:name=".Sign_upActivity">
             <intent-filter>
@@ -48,8 +54,7 @@
         </activity>
 
         <activity android:name=".trip_select_Activity" />
-
-        <!-- <activity android:name=".SessionActivity"></activity> -->
+        <activity android:name=".AddTitleActivity"/>
     </application>
 
 </manifest>
