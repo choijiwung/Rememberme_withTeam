@@ -18,7 +18,7 @@ public class Trip_inputActivity extends AppCompatActivity {
 
     private void updateLabel() {
         String myFormat = "MM/dd/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
 
         start_trip_date.setText(sdf.format(myCalendar.getTime()));
     }

@@ -12,24 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <!--<activity android:name=".ActivityGallery">-->
 
-            <!--&lt;!&ndash; <intent-filter> &ndash;&gt;-->
-            <!--&lt;!&ndash; <action android:name="android.intent.action.MAIN" /> &ndash;&gt;-->
+        <!-- <activity android:name=".ActivityGallery"> -->
 
 
-            <!--&lt;!&ndash; <category android:name="android.intent.category.LAUNCHER" /> &ndash;&gt;-->
-            <!--&lt;!&ndash; </intent-filter> &ndash;&gt;-->
-        <!--</activity>-->
+        <!-- &lt;!&ndash; <intent-filter> &ndash;&gt; -->
+        <!-- &lt;!&ndash; <action android:name="android.intent.action.MAIN" /> &ndash;&gt; -->
+
+
+        <!-- &lt;!&ndash; <category android:name="android.intent.category.LAUNCHER" /> &ndash;&gt; -->
+        <!-- &lt;!&ndash; </intent-filter> &ndash;&gt; -->
+        <!-- </activity> -->
         <activity android:name=".LoginActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Trip_inputActivity"/>
+        <activity android:name=".Trip_inputActivity" />
         <activity android:name=".Sign_upActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,10 +40,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".DatePickerActivity" />
-        <activity android:name=".trip_calendar_Activity"/>
-        <activity android:name=".trip_select_Activity"/>
+        <activity android:name=".trip_calendar_Activity" />
+        <activity android:name=".trip_select_Activity" />
 
-        <!--<activity android:name=".SessionActivity"></activity>-->
+        <!-- <activity android:name=".SessionActivity"></activity> -->
     </application>
 
 </manifest>

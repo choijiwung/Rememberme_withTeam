@@ -33,7 +33,7 @@
             android:text="편리한 기능을 이용해 보아요!"
             android:textSize="19sp" />
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/addTrip"
             style="@android:style/Widget.Button.Inset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
