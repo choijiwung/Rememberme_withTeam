@@ -1,17 +1,15 @@
 package com.rememberme.rememberme;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.squareup.timessquare.CalendarCellDecorator;
 import com.squareup.timessquare.CalendarCellView;
 import com.squareup.timessquare.CalendarPickerView;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -37,31 +35,69 @@ public class trip_calendar_Activity extends AppCompatActivity implements Calenda
         beforeYear.add(Calendar.MONTH,-1);
         nextMonth.add(Calendar.MONTH, 2);
 
-        CalendarPickerView calendar = (CalendarPickerView) findViewById(R.id.calendar_view);
+        final CalendarPickerView calendar = (CalendarPickerView) findViewById(R.id.calendar_view);
         Date today = new Date();
         calendar.init(beforeYear.getTime(), nextMonth.getTime())
                 .withSelectedDate(today);
 
+
+
+
         calendar.init(beforeYear.getTime(), nextMonth.getTime())
                 .inMode(RANGE);
 
+        calendar.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(Date date) {
+                Log.i("aaDates", calendar.getSelectedDates().toString());
+                if(calendar.getSelectedDates().size() > 1){
+                    AlertDialog.Builder alert = new AlertDialog.Builder(trip_calendar_Activity.this);
+                    alert.setTitle("일정 저장");
+                    alert.setMessage("일정을 저장하시겠습니까?");
+                    alert.setPositiveButton("아니요", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+//                        negative, neu~
+                    });
 
+                    alert.setNegativeButton("예", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
+                        }
+                    });
+                    alert.show();
+                }
+            }
 
+            @Override
+            public void onDateUnselected(Date date) {
+
+            }
+        });
         calendar.setCellClickInterceptor(new CalendarPickerView.CellClickInterceptor() {
             @Override
             public boolean onCellClicked(Date date) {
+
+                /*
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd");
                 if(!beforeClicked){
                     beforeClicked = true;
-                    String startDate = date;
+
+                    Date startDate = date;
+                    Log.i("aastDate",startDate.toString());
+                    Date d = startDate;
                 }else{
-                    endDate = date;
+                    beforeClicked = false;
+                    Date endDate = date;
+                    Log.i("aaendDate",endDate.toString());
 //                            RESTful
 //                                    intent
-
-                }
-                return onDaySelected(d);
+                    Date d = endDate;
+                }*/
+                return false;
             }
         });
     }
