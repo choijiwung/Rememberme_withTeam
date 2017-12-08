@@ -1,6 +1,7 @@
 package com.rememberme.rememberme;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -28,12 +29,8 @@ import java.net.URL;
 import static com.rememberme.rememberme.R.id.emailText;
 
 public class Sign_upActivity extends AppCompatActivity implements View.OnClickListener  {
-    EditText etemail;
-    EditText etpassword;
-    EditText etname;
-    EditText etpasswordconfirm;
-    Button btnPost;
-    TextView tvIsConnected;
+    EditText etemail,etpassword,etpasswordconfirm;
+    Button btnSignup;
     User user;
     static    String strJson = "";
     TextView textView;
@@ -49,22 +46,20 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
         etemail = (EditText) findViewById(emailText);
         etpassword = (EditText) findViewById(R.id.passwordText);
         etpasswordconfirm = (EditText) findViewById(R.id.PasswordConfirmText);
-        tvIsConnected = (TextView) findViewById(R.id.textView);
-        textView = (TextView) findViewById(R.id.textView3);
-        btnPost = (Button) findViewById(R.id.button);
+        btnSignup = (Button) findViewById(R.id.btnSignup);
 
 
         // check if you are connected or not
         if(isConnected()){
-            tvIsConnected.setBackgroundColor(0xFF00CC00);
-            tvIsConnected.setText("You are conncted");
+//            tvIsConnected.setBackgroundColor(0xFF00CC00);
+//            tvIsConnected.setText("You are conncted");
         }
         else{
-            tvIsConnected.setText("You are NOT conncted");
+//            tvIsConnected.setText("You are NOT conncted");
         }
 
         // add click listener to Button "POST"
-        btnPost.setOnClickListener(this);
+        btnSignup.setOnClickListener(this);
 
     }
 
@@ -80,7 +75,6 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
             // build jsonObject
             JSONObject jsonObject = new JSONObject();
             jsonObject.accumulate("email", user.getEmail());
-            jsonObject.accumulate("name", user.getName());
             jsonObject.accumulate("password", user.getPassword());
             Log.d("aa","json,pass :" + user.getPassword_confirmation());
             jsonObject.accumulate("password_confirmation", user.getPassword_confirmation());
@@ -142,19 +136,19 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
 
         switch(view.getId()){
-            case R.id.button:
+            case R.id.btnSignup:
                 if(!validate())
                     Toast.makeText(getBaseContext(), "Enter some data!", Toast.LENGTH_LONG).show();
                 else {
                     // call AsynTask to perform network operation on separate thread
                     HttpAsyncTask httpTask = new HttpAsyncTask(Sign_upActivity.this);
-                    Log.d("aa", "name : " + etname.getText().toString());
                     Log.d("aa", "email : " + etemail.getText().toString());
                     Log.d("aa", "password : " + etpassword.getText().toString());
                     Log.d("aa", "password_confirmation : " + etpasswordconfirm.getText().toString());
-                    httpTask.execute("http://70.12.50.58:3000/users/signup", etemail.getText().toString(), etname.getText().toString(), etpassword.getText().toString(), etpasswordconfirm.getText().toString());
+                    httpTask.execute("http://70.12.50.58:3000/users/signup", etemail.getText().toString(), etpassword.getText().toString(), etpasswordconfirm.getText().toString());
 //                    httpTask.execute("http://70.12.50.58:3000/users/signup");
-
+                    Intent Sign_upIntent = new Intent(getApplicationContext(),LoginActivity.class);
+                    startActivity(Sign_upIntent);
                 }
                 break;
         }
@@ -162,7 +156,7 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
     }
     private class HttpAsyncTask extends AsyncTask<String, Void, String> {
 
-        private   Sign_upActivity mainAct;
+        private Sign_upActivity mainAct;
 
         HttpAsyncTask(Sign_upActivity sign_upActivity) {
             this.mainAct = sign_upActivity;
@@ -174,19 +168,19 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
             user.setEmail(urls[1]);
             user.setPassword(urls[2]);
             user.setPassword_confirmation(urls[3]);
-            Log.d("aa",user.toString());
+//            Log.d("aa",user.getPassword_confirmation().toString());
             return POST(urls[0], user);
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(final String result) {
             super.onPostExecute(result);
             strJson  = result;
             Log.d("aa",result);
             mainAct.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(mainAct, "success!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mainAct, "success!"+ result, Toast.LENGTH_LONG).show();
                     try {
                         JSONArray json = new JSONArray(strJson);
                         mainAct.textView.setText(json.toString(1));
@@ -204,8 +198,6 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
         if(etemail.getText().toString().trim().equals(""))
             return false;
         else if(etpassword.getText().toString().trim().equals(""))
-            return false;
-        else if(etname.getText().toString().trim().equals(""))
             return false;
         else if(etpasswordconfirm.getText().toString().trim().equals(""))
             return false;

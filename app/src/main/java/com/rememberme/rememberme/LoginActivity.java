@@ -43,12 +43,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         idText = (EditText) findViewById(R.id.idText);
         passwordText = (EditText) findViewById(R.id.passwordText);
         loginButton = (Button) findViewById(R.id.loginButton);
+
         signButton = (Button) findViewById(R.id.Signbtn);
 
         signButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Sign_upIntent = new Intent(getApplicationContext(),Sign_upActivity.class);
+                Intent Sign_upIntent = new Intent(getApplicationContext(), Sign_upActivity.class);
                 startActivity(Sign_upIntent);
             }
         });
@@ -97,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             httpCon.setDoInput(true);
 
             OutputStream os = httpCon.getOutputStream();
-            os.write(json.getBytes("euc-kr"));
+            os.write(json.getBytes("UTF-8"));
             os.flush();
             // receive response as inputStream
             try {
