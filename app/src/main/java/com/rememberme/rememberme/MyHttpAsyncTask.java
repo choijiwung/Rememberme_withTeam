@@ -6,10 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -21,8 +18,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
-import static android.widget.Toast.makeText;
-
 /**
  * Created by JW on 2017-12-08.
  */
@@ -30,11 +25,20 @@ import static android.widget.Toast.makeText;
 public class MyHttpAsyncTask extends AsyncTask<HashMap<String, Object>, Void, String> {
 
     private final Context context;
+    private Runnable resultRunnable;
+    private String result;
 
         MyHttpAsyncTask(Context context) {
             this.context = context;
         }
 
+    public void setResultRunnable(Runnable resultRunnable) {
+        this.resultRunnable = resultRunnable;
+    }
+
+    public String getResult() {
+        return result;
+    }
 
     @Override
     protected String doInBackground(HashMap<String, Object>... params) {
@@ -58,25 +62,11 @@ public class MyHttpAsyncTask extends AsyncTask<HashMap<String, Object>, Void, St
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            final String strJson  = result;
-            Log.d("aa",result);
+            this.result  = result;
+            Log.i("aaresult",result);
 //            token = result;
 //            Log.d("aa",token.toString());
-            ((Activity)context).runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-//
-                    makeText(context, "success!", Toast.LENGTH_LONG).show();
-
-                    try {
-                        JSONArray json = new JSONArray(strJson);
-                        makeText(context, json.toString(0)+", " + json.toString(1), Toast.LENGTH_SHORT).show();
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
+            ((Activity)context).runOnUiThread(resultRunnable);
 
         }
 

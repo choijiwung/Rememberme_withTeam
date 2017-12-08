@@ -78,6 +78,7 @@
                 android:padding="10dp"
                 android:textColor="@android:color/darker_gray"
                 android:textColorHint="@android:color/darker_gray" />
+
             <EditText
                 android:id="@+id/passwordText"
                 android:layout_width="280dp"

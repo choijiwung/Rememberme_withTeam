@@ -1,10 +1,6 @@
 package com.rememberme.rememberme;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,20 +12,13 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.HashMap;
 
 import static com.rememberme.rememberme.R.id.emailText;
 
 public class Sign_upActivity extends AppCompatActivity implements View.OnClickListener  {
-    EditText etemail,etpassword,etpasswordconfirm;
+    EditText idText, passwordText, passwordconfirmText;
     Button btnSignup;
     User user;
     static    String strJson = "";
@@ -43,14 +32,14 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
 //        final String url = "http://70.12.50.58:3000/users";
         //레이아웃에서 뷰 찾기
 
-        etemail = (EditText) findViewById(emailText);
-        etpassword = (EditText) findViewById(R.id.passwordText);
-        etpasswordconfirm = (EditText) findViewById(R.id.PasswordConfirmText);
+        idText = (EditText) findViewById(emailText);
+        passwordText = (EditText) findViewById(R.id.passwordText);
+        passwordconfirmText = (EditText) findViewById(R.id.PasswordConfirmText);
         btnSignup = (Button) findViewById(R.id.btnSignup);
 
 
         // check if you are connected or not
-        if(isConnected()){
+        if(MyHttpAsyncTask.isConnected(this)){
 //            tvIsConnected.setBackgroundColor(0xFF00CC00);
 //            tvIsConnected.setText("You are conncted");
         }
@@ -63,76 +52,6 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    public static String POST(String url, User user){
-        InputStream is = null;
-        String result = "";
-        try {
-            URL urlCon = new URL(url);
-            HttpURLConnection httpCon = (HttpURLConnection)urlCon.openConnection();
-
-            String json = "";
-
-            // build jsonObject
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("email", user.getEmail());
-            jsonObject.accumulate("password", user.getPassword());
-            Log.d("aa","json,pass :" + user.getPassword_confirmation());
-            jsonObject.accumulate("password_confirmation", user.getPassword_confirmation());
-
-            // convert JSONObject to JSON to String
-            json = jsonObject.toString();
-
-            // ** Alternative way to convert Person object to JSON string usin Jackson Lib
-            // ObjectMapper mapper = new ObjectMapper();
-            // json = mapper.writeValueAsString(user);
-
-            // Set some headers to inform server about the type of the content
-            httpCon.setRequestProperty("Accept", "application/json");
-            httpCon.setRequestProperty("Content-type", "application/json");
-
-            // OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
-            httpCon.setDoOutput(true);
-            // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
-            httpCon.setDoInput(true);
-
-            OutputStream os = httpCon.getOutputStream();
-            os.write(json.getBytes("UTF-8"));
-            os.flush();
-            // receive response as inputStream
-            try {
-                is = httpCon.getInputStream();
-                // convert inputstream to string
-                if(is != null)
-                    result = convertInputStreamToString(is);
-                else
-                    result = "Did not work!";
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            finally {
-                httpCon.disconnect();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (Exception e) {
-            Log.d("InputStream", e.getLocalizedMessage());
-        }
-
-        return result;
-    }
-
-    public boolean isConnected(){
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
-    }
-
     public void onClick(View view) {
 
         switch(view.getId()){
@@ -141,12 +60,30 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(getBaseContext(), "Enter some data!", Toast.LENGTH_LONG).show();
                 else {
                     // call AsynTask to perform network operation on separate thread
-                    HttpAsyncTask httpTask = new HttpAsyncTask(Sign_upActivity.this);
-                    Log.d("aa", "email : " + etemail.getText().toString());
-                    Log.d("aa", "password : " + etpassword.getText().toString());
-                    Log.d("aa", "password_confirmation : " + etpasswordconfirm.getText().toString());
-                    httpTask.execute("http://70.12.50.58:3000/users/signup", etemail.getText().toString(), etpassword.getText().toString(), etpasswordconfirm.getText().toString());
-//                    httpTask.execute("http://70.12.50.58:3000/users/signup");
+                    final MyHttpAsyncTask httpTask = new MyHttpAsyncTask(Sign_upActivity.this);
+                    httpTask.setResultRunnable(new Runnable() {
+                        @Override
+                        public void run() {
+                            String strJson = httpTask.getResult();
+                            Log.i("aaaResult", strJson);
+                            Toast.makeText(Sign_upActivity.this, strJson, Toast.LENGTH_LONG).show();
+
+                            try {
+                                JSONArray json = new JSONArray(strJson);
+                                Toast.makeText(Sign_upActivity.this, json.toString(0)+", " + json.toString(1), Toast.LENGTH_SHORT).show();
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    HashMap<String, Object> params = new HashMap<>();
+                    params.put("url", "http://70.12.50.58:3000/users/signup");
+                    params.put("email", idText.getText().toString());
+                    params.put("password", passwordText.getText().toString());
+                    params.put("password_confirmation", passwordconfirmText.getText().toString());
+                    httpTask.execute(params);
+
                     Intent Sign_upIntent = new Intent(getApplicationContext(),LoginActivity.class);
                     startActivity(Sign_upIntent);
                 }
@@ -154,65 +91,16 @@ public class Sign_upActivity extends AppCompatActivity implements View.OnClickLi
         }
 
     }
-    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
-
-        private Sign_upActivity mainAct;
-
-        HttpAsyncTask(Sign_upActivity sign_upActivity) {
-            this.mainAct = sign_upActivity;
-        }
-        @Override
-        protected String doInBackground(String... urls) {
-
-            user = new User();
-            user.setEmail(urls[1]);
-            user.setPassword(urls[2]);
-            user.setPassword_confirmation(urls[3]);
-//            Log.d("aa",user.getPassword_confirmation().toString());
-            return POST(urls[0], user);
-        }
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(final String result) {
-            super.onPostExecute(result);
-            strJson  = result;
-            Log.d("aa",result);
-            mainAct.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(mainAct, "success!"+ result, Toast.LENGTH_LONG).show();
-                    try {
-                        JSONArray json = new JSONArray(strJson);
-                        mainAct.textView.setText(json.toString(1));
-                        Toast.makeText(mainAct, json.toString(0)+", " + json.toString(1)+json.toString(2), Toast.LENGTH_SHORT).show();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-        }
-    }
 
     private boolean validate(){
-        if(etemail.getText().toString().trim().equals(""))
+        if(idText.getText().toString().trim().equals(""))
             return false;
-        else if(etpassword.getText().toString().trim().equals(""))
+        else if(passwordText.getText().toString().trim().equals(""))
             return false;
-        else if(etpasswordconfirm.getText().toString().trim().equals(""))
+        else if(passwordconfirmText.getText().toString().trim().equals(""))
             return false;
         else
             return true;
     }
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
-        String line = "";
-        String result = "";
-        while((line = bufferedReader.readLine()) != null)
-            result += line;
 
-        inputStream.close();
-        return result;
-
-    }
 }

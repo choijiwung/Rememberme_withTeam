@@ -2,17 +2,23 @@ package com.rememberme.rememberme;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.squareup.timessquare.CalendarCellDecorator;
 import com.squareup.timessquare.CalendarCellView;
 import com.squareup.timessquare.CalendarPickerView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import static com.squareup.timessquare.CalendarPickerView.SelectionMode.RANGE;
 
 public class trip_calendar_Activity extends AppCompatActivity implements CalendarCellDecorator {
+    boolean beforeClicked=false;
 
 
     @Override
@@ -38,5 +44,25 @@ public class trip_calendar_Activity extends AppCompatActivity implements Calenda
 
         calendar.init(beforeYear.getTime(), nextMonth.getTime())
                 .inMode(RANGE);
+
+
+
+
+        calendar.setCellClickInterceptor(new CalendarPickerView.CellClickInterceptor() {
+            @Override
+            public boolean onCellClicked(Date date) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd");
+                if(!beforeClicked){
+                    beforeClicked = true;
+                    String startDate = date;
+                }else{
+                    endDate = date;
+//                            RESTful
+//                                    intent
+
+                }
+                return onDaySelected(d);
+            }
+        });
     }
 }
