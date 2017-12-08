@@ -37,7 +37,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Trip_inputActivity" />
         <activity android:name=".Sign_upActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

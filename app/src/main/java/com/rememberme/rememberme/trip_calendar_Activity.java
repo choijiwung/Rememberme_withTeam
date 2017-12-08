@@ -11,8 +11,10 @@ import com.squareup.timessquare.CalendarCellDecorator;
 import com.squareup.timessquare.CalendarCellView;
 import com.squareup.timessquare.CalendarPickerView;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static com.squareup.timessquare.CalendarPickerView.SelectionMode.RANGE;
 
@@ -49,8 +51,15 @@ public class trip_calendar_Activity extends AppCompatActivity implements Calenda
 
         calendar.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
             @Override
+
             public void onDateSelected(Date date) {
+
                 Log.i("aaDates", calendar.getSelectedDates().toString());
+                final List<Date> choiceDate = calendar.getSelectedDates();
+
+                SimpleDateFormat startday, endday;
+
+
                 if(calendar.getSelectedDates().size() > 1){
                     AlertDialog.Builder alert = new AlertDialog.Builder(trip_calendar_Activity.this);
                     alert.setTitle("일정 저장");
@@ -66,9 +75,31 @@ public class trip_calendar_Activity extends AppCompatActivity implements Calenda
                     alert.setNegativeButton("예", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            setText btnstartdate;
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                            startActivity(intent);
+                            SimpleDateFormat sdf,sdf2;
+                            //setText btnstartdate;
+                            //startDate, endDate는 서버로 보내고
+                            List<Date> choiceDate = calendar.getSelectedDates();
+                            Date startDate = choiceDate.get(0);
+                            Date endDate = choiceDate.get(choiceDate.size());
+                            //startDate를 tostring으로바꿔서
+                            sdf = new SimpleDateFormat("YYYY년 MM월 dd일");
+                            String startDay = sdf.format(startDate);
+                            String endDay = sdf.format(endDate);
+
+//                            Intent mainIntent = new Intent(getApplicationContext(),MainActivity.class);
+
+                            Bundle bundle = new Bundle();
+                            bundle.putString("startDay", startDay);
+                            bundle.putString("endDay", endDay);
+                            Fragment fragobj = new Fragmentclass();
+                            // set Fragmentclass Arguments
+
+                            fragobj.setArguments(bundle);
+                            Intent sendDayIntent = new Intent(getApplicationContext(),AddTitleFragment.class);
+                            sendDayIntent.putExtra("startDay", startDay);
+                            sendDayIntent.putExtra("endDay",endDay);
+                            startActivity(sendDayIntent);
+//                            startActivity(mainIntent);
                         }
                     });
                     alert.show();
