@@ -1,21 +1,26 @@
 package com.rememberme.rememberme;
 
 /**
- * Created by JW on 2017-12-05.
+ * Created by samsung on 2017-12-08.
  */
 
 public class User {
-  String email;
-  String password;
-  String password_confirmation;
-  String name;
 
-    public String getPassword_confirmation() {
-        return password_confirmation;
+    private String name;
+    private String email;
+    private String password;
+    private String passwordConfirmation;
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password= password;
     }
 
-    public void setPassword_confirmation(String password_confirmation) {
-        this.password_confirmation = password_confirmation;
+    public User(String name, String email, String password, String passwordConfirmation) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.passwordConfirmation = passwordConfirmation;
     }
 
     public String getName() {
@@ -42,8 +47,11 @@ public class User {
         this.password = password;
     }
 
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
+    }
 
-
-
-
+    public void setPasswordConfirmation(String passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
+    }
 }

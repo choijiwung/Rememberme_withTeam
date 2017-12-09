@@ -7,22 +7,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/actionbar_linear"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_gravity="center">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="37dp"
-            android:src="@drawable/logo"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@mipmap/list_background"
@@ -34,27 +18,30 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:weightSum="1">
-            <TextView
-                android:id="@+id/textView_trip"
+
+            <EditText
+                android:id="@+id/titleText"
                 android:layout_width="308dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="50dp"
+                android:layout_weight="0.15"
                 android:background="#813b3b3b"
-                android:gravity="center"
                 android:elegantTextHeight="true"
-                android:text="여행 제목을 입력하세요."
+                android:gravity="center"
+                android:hint="여행 제목을 입력하세요."
                 android:textColor="@android:color/white"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:typeface="sans"
-                android:layout_weight="0.15" />
+                android:typeface="sans" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="1">
+
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
@@ -76,6 +63,7 @@
                 android:background="#813b3b3b"
                 android:text="여행시작일"
                 android:textColor="@android:color/white" />
+
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
@@ -97,12 +85,13 @@
                 android:text="여행 종료일"
                 android:textColor="@android:color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.02"
+            android:layout_height="142dp"
             android:orientation="vertical"
             android:weightSum="1">
+
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="50dp"
@@ -110,19 +99,68 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="50dp"
                 app:srcCompat="@android:color/white" />
-            <TextView
-                android:id="@+id/textView13"
+
+            <EditText
+                android:id="@+id/descriptionText"
                 android:layout_width="319dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="15dp"
+                android:layout_weight="0.01"
                 android:background="#813b3b3b"
                 android:elegantTextHeight="true"
                 android:gravity="center"
-                android:text="여행을 나타내는 태그를 1개 이상 입력해주세요"
+                android:hint="여행을 나타내는 태그를 1개 이상 입력해주세요"
                 android:textColor="@android:color/white"
-                android:textSize="15sp"
-                android:layout_weight="0.01" />
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/regionText"
+                android:layout_width="319dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="0.01"
+                android:background="#813b3b3b"
+                android:elegantTextHeight="true"
+                android:gravity="center"
+                android:hint="지역을 입력하세요"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/Btntripsend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="249dp"
+                android:layout_weight="1"
+                android:text="일정완료" />
+        </RelativeLayout>
+
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/actionbar_linear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:src="@drawable/logo"
+            />
+
+    </LinearLayout>
+
 </LinearLayout>

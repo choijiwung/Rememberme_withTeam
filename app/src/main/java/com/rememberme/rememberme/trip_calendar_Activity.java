@@ -1,8 +1,8 @@
 package com.rememberme.rememberme;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import static com.squareup.timessquare.CalendarPickerView.SelectionMode.RANGE;
 
@@ -61,6 +62,18 @@ public class trip_calendar_Activity extends AppCompatActivity implements Calenda
 
 
                 if(calendar.getSelectedDates().size() > 1){
+                    SimpleDateFormat sdf;
+                    Date startDate = choiceDate.get(0);
+                    Date endDate = choiceDate.get(choiceDate.size()-1);
+                    //startDate를 tostring으로바꿔서
+                    sdf = new SimpleDateFormat("YYYY년 MM월 dd일", Locale.KOREA);
+                    String startDay = sdf.format(startDate);
+                    String endDay = sdf.format(endDate);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("startDay", startDay);
+                    bundle.putString("endDay", endDay);
+                    Fragment AddTitleFragment = new Fragment();
+                    AddTitleFragment.setArguments(bundle);
                     AlertDialog.Builder alert = new AlertDialog.Builder(trip_calendar_Activity.this);
                     alert.setTitle("일정 저장");
                     alert.setMessage("일정을 저장하시겠습니까?");
@@ -75,31 +88,9 @@ public class trip_calendar_Activity extends AppCompatActivity implements Calenda
                     alert.setNegativeButton("예", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            SimpleDateFormat sdf,sdf2;
-                            //setText btnstartdate;
-                            //startDate, endDate는 서버로 보내고
-                            List<Date> choiceDate = calendar.getSelectedDates();
-                            Date startDate = choiceDate.get(0);
-                            Date endDate = choiceDate.get(choiceDate.size());
-                            //startDate를 tostring으로바꿔서
-                            sdf = new SimpleDateFormat("YYYY년 MM월 dd일");
-                            String startDay = sdf.format(startDate);
-                            String endDay = sdf.format(endDate);
 
-//                            Intent mainIntent = new Intent(getApplicationContext(),MainActivity.class);
 
-                            Bundle bundle = new Bundle();
-                            bundle.putString("startDay", startDay);
-                            bundle.putString("endDay", endDay);
-                            Fragment fragobj = new Fragmentclass();
-                            // set Fragmentclass Arguments
 
-                            fragobj.setArguments(bundle);
-                            Intent sendDayIntent = new Intent(getApplicationContext(),AddTitleFragment.class);
-                            sendDayIntent.putExtra("startDay", startDay);
-                            sendDayIntent.putExtra("endDay",endDay);
-                            startActivity(sendDayIntent);
-//                            startActivity(mainIntent);
                         }
                     });
                     alert.show();
@@ -109,29 +100,6 @@ public class trip_calendar_Activity extends AppCompatActivity implements Calenda
             @Override
             public void onDateUnselected(Date date) {
 
-            }
-        });
-        calendar.setCellClickInterceptor(new CalendarPickerView.CellClickInterceptor() {
-            @Override
-            public boolean onCellClicked(Date date) {
-
-                /*
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd");
-                if(!beforeClicked){
-                    beforeClicked = true;
-
-                    Date startDate = date;
-                    Log.i("aastDate",startDate.toString());
-                    Date d = startDate;
-                }else{
-                    beforeClicked = false;
-                    Date endDate = date;
-                    Log.i("aaendDate",endDate.toString());
-//                            RESTful
-//                                    intent
-                    Date d = endDate;
-                }*/
-                return false;
             }
         });
     }

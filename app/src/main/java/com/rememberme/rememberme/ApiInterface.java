@@ -18,7 +18,7 @@ public interface ApiInterface {
     @Headers({"Accept: application/json"})
     @POST("/users/signin")
     Call<User> login(@Query("email") String email,
-                    @Query("password") String password );
+                     @Query("password") String password );
 
 
 //    @POST("/users/signup")
